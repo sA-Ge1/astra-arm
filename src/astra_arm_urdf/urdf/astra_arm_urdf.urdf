@@ -1,0 +1,467 @@
+
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="astra_arm_urdf">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-3.0844E-05 0.0011838 0.039113"
+        rpy="0 0 0" />
+      <mass
+        value="0.21715" />
+      <inertia
+        ixx="0.00019989"
+        ixy="9.7824E-08"
+        ixz="-7.7943E-08"
+        iyy="0.00019779"
+        iyz="-6.6812E-06"
+        izz="0.00027306" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="shoulder_link">
+    <inertial>
+      <origin
+        xyz="-7.5006E-08 0.012535 0.018361"
+        rpy="0 0 0" />
+      <mass
+        value="0.1236" />
+      <inertia
+        ixx="7.651E-05"
+        ixy="2.7779E-10"
+        ixz="6.6766E-11"
+        iyy="8.3288E-05"
+        iyz="-7.6888E-06"
+        izz="7.654E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.050402"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="shoulder_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10.5"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="upperarm_link">
+    <inertial>
+      <origin
+        xyz="-0.00071200472275261 -0.00630711901343494 0.0699991316734542"
+        rpy="0 0 0" />
+      <mass
+        value="0.137956897450908" />
+      <inertia
+        ixx="0.000412802425063208"
+        ixy="-1.54156023193904E-09"
+        ixz="3.8766709137467E-06"
+        iyy="0.000431598972020417"
+        iyz="2.53724770389783E-09"
+        izz="3.08732568954117E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/upperarm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/upperarm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="upperarm_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.004 0.03855"
+      rpy="0 0 0" />
+    <parent
+      link="shoulder_link" />
+    <child
+      link="upperarm_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10.5"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="elbow_link">
+    <inertial>
+      <origin
+        xyz="0.0282843572655019 0.0171086319271421 4.09041417300804E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.122761924125554" />
+      <inertia
+        ixx="2.77007139666344E-05"
+        ixy="-5.07725389371186E-07"
+        ixz="-2.24351129067317E-07"
+        iyy="0.000127148823996402"
+        iyz="-9.22811188709359E-09"
+        izz="0.000117815411609115" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/elbow_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/elbow_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="elbow_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0014208 0.004 0.13999"
+      rpy="0 0 0" />
+    <parent
+      link="upperarm_link" />
+    <child
+      link="elbow_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10.5"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="wrist_link">
+    <inertial>
+      <origin
+        xyz="0.0198135251298725 -0.00246462048019954 0.00507245140955276"
+        rpy="0 0 0" />
+      <mass
+        value="0.0275804642723953" />
+      <inertia
+        ixx="3.41874740135694E-06"
+        ixy="4.2796701405099E-07"
+        ixz="-1.12001078956333E-08"
+        iyy="6.50091950101727E-06"
+        iyz="3.16684120748777E-09"
+        izz="5.80153585835653E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/wrist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_joint"
+    type="revolute">
+    <origin
+      xyz="0.1057 0.01435 -0.0051"
+      rpy="0 0 0" />
+    <parent
+      link="elbow_link" />
+    <child
+      link="wrist_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10.5"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="extra_wrist_link">
+    <inertial>
+      <origin
+        xyz="0.026279391293826 0.00464184436766784 0.00206186061675007"
+        rpy="0 0 0" />
+      <mass
+        value="0.022704688254789" />
+      <inertia
+        ixx="3.29041243163955E-06"
+        ixy="-5.46124141762122E-07"
+        ixz="-8.30851199579705E-07"
+        iyy="5.33636886986773E-06"
+        iyz="-4.65500232236995E-08"
+        izz="6.67442856376792E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/extra_wrist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/extra_wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="extra_wrist_joint"
+    type="revolute">
+    <origin
+      xyz="0.0284 -0.01685 0.0051"
+      rpy="0 0 0" />
+    <parent
+      link="wrist_link" />
+    <child
+      link="extra_wrist_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10.5"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="ee_link">
+    <inertial>
+      <origin
+        xyz="0.00953691100054797 -0.00112665248045042 -0.00173305637141519"
+        rpy="0 0 0" />
+      <mass
+        value="0.0207769023885776" />
+      <inertia
+        ixx="1.52137549218193E-06"
+        ixy="7.28750022633995E-08"
+        ixz="4.58227526413929E-09"
+        iyy="3.70972054244846E-06"
+        iyz="1.23065627283132E-08"
+        izz="5.05779076843232E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/ee_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://astra_arm_urdf/meshes/ee_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ee_joint"
+    type="fixed">
+    <origin
+      xyz="0.045444 0.0025 0.012135"
+      rpy="0 0 0" />
+    <parent
+      link="extra_wrist_link" />
+    <child
+      link="ee_link" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0.5"
+      upper="0.5"
+      effort="10.5"
+      velocity="1.5" />
+  </joint>
+    <link name="ee_rotation_x">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="ee_rotation_joint_x" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="ee_link"/>
+    <child link="ee_rotation_x"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+  <link name="ee_rotation_y">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="ee_rotation_joint_y" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="ee_rotation_x"/>
+    <child link="ee_rotation_y"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="ee_rotation_z">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="ee_rotation_joint_z" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="ee_rotation_y"/>
+    <child link="ee_rotation_z"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+</robot>
