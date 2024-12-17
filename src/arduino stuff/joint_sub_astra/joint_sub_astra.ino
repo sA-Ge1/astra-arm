@@ -8,22 +8,22 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 #define SERVOMAX  600  // Max pulse length count
 
 // Zero angles for each joint
-int zero_shoulder = 0;
-int zero_upper_arm = 0;
-int zero_elbow = 0;
-int zero_wrist = 0;
-int zero_extra_wrist = 0;
+int zero_shoulder = 90;
+int zero_upperarm = 85;
+int zero_elbow = 92;
+int zero_wrist = 90;
+int zero_extra_wrist = 90;
 
 // Flags to specify if we add (true) or subtract (false) from zero angles
 bool add_to_shoulder = true;
-bool add_to_upper_arm = true;
-bool add_to_elbow = true;
+bool add_to_upperarm = false;
+bool add_to_elbow = false;
 bool add_to_wrist = true;
 bool add_to_extra_wrist = true;
 
 // Store joint values as integers relative to zero angles
 int shoulder_joint = 0;
-int upper_arm_joint = 0;
+int upperarm_joint = 0;
 int elbow_joint = 0;
 int wrist_joint = 0;
 int extra_wrist_joint = 0;
@@ -31,7 +31,7 @@ int extra_wrist_joint = 0;
 void setup() {
   Serial.begin(115200);  // Communication with ROS 2 node
   Serial.println("ESP32 ready to receive joint data.");
-  Wire.begin(21, 22);
+  Wire.begin(21, 22);//sda 21
   pwm.begin();
   pwm.setPWMFreq(50);  // Set frequency to 50 Hz for SG90 servos
 }
@@ -42,9 +42,9 @@ void loop() {
     parseJointData(data);
     printJointValues();
 
-    // Set servo positions after printing the joint values
+    // Set servo positionsw after printing the joint values
     pwm.setPWM(0, 0, angleToPulse(clampAngle(shoulder_joint)));       // Servo for shoulder
-    pwm.setPWM(1, 0, angleToPulse(clampAngle(upper_arm_joint)));      // Servo for upper arm
+    pwm.setPWM(1, 0, angleToPulse(clampAngle(upperarm_joint)));      // Servo for upper arm
     pwm.setPWM(2, 0, angleToPulse(clampAngle(elbow_joint)));          // Servo for elbow
     pwm.setPWM(3, 0, angleToPulse(clampAngle(wrist_joint)));          // Servo for wrist
     pwm.setPWM(4, 0, angleToPulse(clampAngle(extra_wrist_joint)));    // Servo for extra wrist
@@ -66,8 +66,8 @@ void parseJointData(String data) {
 
       if (jointName == "shoulder_joint") {
         shoulder_joint = add_to_shoulder ? (zero_shoulder + jointValue) : (zero_shoulder - jointValue);
-      } else if (jointName == "upper_arm_joint") {
-        upper_arm_joint = add_to_upper_arm ? (zero_upper_arm + jointValue) : (zero_upper_arm - jointValue);
+      } else if (jointName == "upperarm_joint") {
+        upperarm_joint = add_to_upperarm ? (zero_upperarm + jointValue) : (zero_upperarm - jointValue);
       } else if (jointName == "elbow_joint") {
         elbow_joint = add_to_elbow ? (zero_elbow + jointValue) : (zero_elbow - jointValue);
       } else if (jointName == "wrist_joint") {
@@ -85,7 +85,7 @@ void parseJointData(String data) {
 void printJointValues() {
   Serial.println("Adjusted joint values:");
   Serial.print("  Shoulder: "); Serial.println(shoulder_joint);
-  Serial.print("  Upper Arm: "); Serial.println(upper_arm_joint);
+  Serial.print("  Upper Arm: "); Serial.println(upperarm_joint);
   Serial.print("  Elbow: "); Serial.println(elbow_joint);
   Serial.print("  Wrist: "); Serial.println(wrist_joint);
   Serial.print("  Extra Wrist: "); Serial.println(extra_wrist_joint);

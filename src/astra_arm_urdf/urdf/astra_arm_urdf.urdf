@@ -392,76 +392,33 @@
       effort="10.5"
       velocity="1.5" />
   </joint>
-    <link name="ee_rotation_x">
-    <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <mass value="0.001"/>
-      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="0.01"/>
-      </geometry>
-      <material name="black">
-        <color rgba="0 0 0 1"/>
-      </material>
-    </visual>
-  </link>
-
-  <joint name="ee_rotation_joint_x" type="continuous">
+    
+    <link name="ee_rotation_x"/>
+  <joint name="ee_rotation_joint_x" type="revolute">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="ee_link"/>
     <child link="ee_rotation_x"/>
     <axis xyz="1 0 0"/>
+    <limit lower="-3.1416" upper="3.1416" effort="1" velocity="1"/>
   </joint>
 
-  <link name="ee_rotation_y">
-    <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <mass value="0.001"/>
-      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="0.01"/>
-      </geometry>
-      <material name="black">
-        <color rgba="0 0 0 1"/>
-      </material>
-    </visual>
-  </link>
-
-  <joint name="ee_rotation_joint_y" type="continuous">
+  <link name="ee_rotation_y"/>
+  <joint name="ee_rotation_joint_y" type="revolute">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="ee_rotation_x"/>
     <child link="ee_rotation_y"/>
     <axis xyz="0 1 0"/>
+    <limit lower="-3.1416" upper="3.1416" effort="1" velocity="1"/>
   </joint>
 
-  <link name="ee_rotation_z">
-    <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <mass value="0.001"/>
-      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="0.01"/>
-      </geometry>
-      <material name="black">
-        <color rgba="0 0 0 1"/>
-      </material>
-    </visual>
-  </link>
-
-  <joint name="ee_rotation_joint_z" type="continuous">
+  <link name="robot_ee"/>
+  <joint name="ee_rotation_joint_z" type="revolute">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="ee_rotation_y"/>
-    <child link="ee_rotation_z"/>
+    <child link="robot_ee"/>
     <axis xyz="0 0 1"/>
+    <limit lower="-3.1416" upper="3.1416" effort="1" velocity="1"/>
   </joint>
-
+  
+  
 </robot>
