@@ -4,15 +4,15 @@ import rclpy
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from pymoveit2 import MoveIt2, MoveIt2State
-from pymoveit2.robots import astra as robot
+from pymoveit2.robots import astraaa as robot
 from scipy.spatial.transform import Rotation as R
 #home 0.024,0.0,0.111 quat=0,0,0,1
 def main():
     rclpy.init()
     node = Node("arm_pose_goal")
-    node.declare_parameter("position", [0.20, 0.0, 0.0])
+    node.declare_parameter("position", [0.20, 0.12, 0.0])
     # Specify the desired orientation in roll, pitch, yaw (in radians)
-    roll, pitch, yaw = 0.00, 0.0, 0.0
+    roll, pitch, yaw = 0.0,0.0, 0.0
     r = R.from_euler('xyz', [roll, pitch, yaw])
     quaternion = r.as_quat()  # Returns [x, y, z, w]
     node.declare_parameter("quat_xyzw", quaternion.tolist())

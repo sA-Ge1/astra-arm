@@ -1,0 +1,8 @@
+# Default initial positions for astra_arm_urdf's ros2_control fake system
+
+initial_positions:
+  elbow_joint: 0.0
+  extra_wrist_joint: 0.0
+  shoulder_joint: 0.0
+  upperarm_joint: 0.0
+  wrist_joint: 0.0
