@@ -18,6 +18,7 @@ arm_controller:
       - elbow_joint
       - wrist_joint
       - extra_wrist_joint
+      - ee_rotation_joint_x
     command_interfaces:
       - position
     state_interfaces:

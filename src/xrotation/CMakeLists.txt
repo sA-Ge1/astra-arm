@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(astra_config)
+project(xrotation)
 
 find_package(ament_cmake REQUIRED)
 

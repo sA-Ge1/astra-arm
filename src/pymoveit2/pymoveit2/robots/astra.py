@@ -14,9 +14,7 @@ def joint_names(prefix: str = prefix) -> List[str]:
         prefix + "elbow_joint",
         prefix + "extra_wrist_joint",
         prefix + "wrist_joint",
-        prefix + "ee_rotation_joint_x",
-        prefix + "ee_rotation_joint_y",
-        prefix + "ee_rotation_joint_z",
+        prefix + "ee_rotation_joint_x"
     ]
 
 # Base link name
@@ -25,7 +23,7 @@ def base_link_name(prefix: str = prefix) -> str:
 
 # End effector name
 def end_effector_name(prefix: str = prefix) -> str:
-    return prefix + "robot_ee"
+    return prefix + "ee_rotation_x"
 
 # Gripper joint names
 def gripper_joint_names(prefix: str = prefix) -> List[str]:
