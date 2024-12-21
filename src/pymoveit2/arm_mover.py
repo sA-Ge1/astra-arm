@@ -16,9 +16,6 @@ def main():
     r = R.from_euler('xyz', [roll, pitch, yaw])
     quaternion = r.as_quat()  # Returns [x, y, z, w]
     node.declare_parameter("quat_xyzw", quaternion.tolist())
-    node.declare_parameter("synchronous", True)
-    # If non-positive, don't cancel. Only used if synchronous is False
-    node.declare_parameter("cancel_after_secs", 0.0)
     # Planner ID
     node.declare_parameter("planner_id", "RRTConnectkConfigDefault")
     # Declare parameters for cartesian planning
@@ -59,10 +56,6 @@ def main():
     # Get parameters
     position = node.get_parameter("position").get_parameter_value().double_array_value
     quat_xyzw = node.get_parameter("quat_xyzw").get_parameter_value().double_array_value
-    synchronous = node.get_parameter("synchronous").get_parameter_value().bool_value
-    cancel_after_secs = (
-        node.get_parameter("cancel_after_secs").get_parameter_value().double_value
-    )
     cartesian = node.get_parameter("cartesian").get_parameter_value().bool_value
     cartesian_max_step = (
         node.get_parameter("cartesian_max_step").get_parameter_value().double_value
@@ -98,37 +91,9 @@ def main():
         cartesian_max_step=cartesian_max_step,
         cartesian_fraction_threshold=cartesian_fraction_threshold,
     )
-    if synchronous:
-        # Note: the same functionality can be achieved by setting
-        # `synchronous:=false` and `cancel_after_secs` to a negative value.
-        moveit2.wait_until_executed()
-    else:
-        # Wait for the request to get accepted (i.e., for execution to start)
-        print("Current State: " + str(moveit2.query_state()))
-        rate = node.create_rate(10)
-        while moveit2.query_state() != MoveIt2State.EXECUTING:
-            rate.sleep()
-
-        # Get the future
-        print("Current State: " + str(moveit2.query_state()))
-        future = moveit2.get_execution_future()
-
-        # Cancel the goal
-        if cancel_after_secs > 0.0:
-            # Sleep for the specified time
-            sleep_time = node.create_rate(cancel_after_secs)
-            sleep_time.sleep()
-            # Cancel the goal
-            print("Cancelling goal")
-            moveit2.cancel_execution()
-
-        # Wait until the future is done
-        while not future.done():
-            rate.sleep()
-
-        # Print the result
-        print("Result status: " + str(future.result().status))
-        print("Result error code: " + str(future.result().result.error_code))
+    
+    # Wait for the movement to complete
+    moveit2.wait_until_executed()
 
     rclpy.shutdown()
     executor_thread.join()

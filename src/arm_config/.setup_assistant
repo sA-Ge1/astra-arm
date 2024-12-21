@@ -5,15 +5,14 @@ moveit_setup_assistant_config:
   srdf:
     relative_path: config/astra_arm_urdf.srdf
   package_settings:
-    author_name: aditya_karumbaiah
+    author_name: adityakarumbaiah
     author_email: adityakarumbaiah@gmail.com
-    generated_timestamp: 1734455506
+    generated_timestamp: 1734787671
   control_xacro:
     command:
       - position
     state:
       - position
-      - velocity
   modified_urdf:
     xacros:
       - control_xacro
@@ -22,4 +21,3 @@ moveit_setup_assistant_config:
       - position
     state:
       - position
-      - velocity

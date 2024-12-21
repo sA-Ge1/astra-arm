@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>xrotation</name>
+  <name>arm_config</name>
   <version>0.3.0</version>
   <description>
      An automatically generated package with all the configuration and launch files for using the astra_arm_urdf with the MoveIt Motion Planning Framework
   </description>
-  <maintainer email="ak@gmail.com">ak</maintainer>
+  <maintainer email="adityakarumbaiah@gmail.com">adityakarumbaiah</maintainer>
 
   <license>BSD</license>
 
@@ -14,7 +14,7 @@
   <url type="bugtracker">https://github.com/ros-planning/moveit2/issues</url>
   <url type="repository">https://github.com/ros-planning/moveit2</url>
 
-  <author email="ak@gmail.com">ak</author>
+  <author email="adityakarumbaiah@gmail.com">adityakarumbaiah</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
